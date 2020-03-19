@@ -93,19 +93,27 @@ int main(void)
   MX_SPI5_Init();
   /* USER CODE BEGIN 2 */
 	ILI9341_Init();
-	ILI9341_Fill_Screen(RED);
-	ILI9341_Draw_Rectangle(100, 100, 50, 50, BLUE);
+	ILI9341_Fill_Screen(WHITE);
+	//ILI9341_Draw_Rectangle(0, 0, 50, 50, BLUE);
+	//HAL_Delay(3000);
+	//ILI9341_Fill_Screen(RED);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+	uint16_t y = 0;
   while (1)
   {
     /* USER CODE END WHILE */
-
+		ILI9341_Draw_Rectangle(95, y, 50, 50, WHITE);
+		y = (y+5)%350;
+		ILI9341_Draw_Rectangle(95, y, 50, 50, BLUE);
+		
+		HAL_Delay(100);
     /* USER CODE BEGIN 3 */
-		HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
-		HAL_Delay(1000);
+		//HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
+		//HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

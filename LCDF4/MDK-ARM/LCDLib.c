@@ -408,4 +408,3 @@ if((Y+Height-1)>=LCD_HEIGHT)
 ILI9341_Set_Address(X, Y, X, Y+Height-1);
 ILI9341_Draw_Colour_Burst(Colour, Height);
 }
-
