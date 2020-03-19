@@ -6,6 +6,7 @@
 "lcdf4\stm32f4xx_it.o"
 "lcdf4\stm32f4xx_hal_msp.o"
 "lcdf4\lcdlib.o"
+"lcdf4\lcdgfx.o"
 "lcdf4\stm32f4xx_hal_spi.o"
 "lcdf4\stm32f4xx_hal_tim.o"
 "lcdf4\stm32f4xx_hal_tim_ex.o"

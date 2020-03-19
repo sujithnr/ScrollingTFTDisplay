@@ -23,6 +23,8 @@
 #include "spi.h"
 #include "gpio.h"
 #include "LCDLib.h"
+#include "LCDGFX.h"
+#include "snow_tiger.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -94,6 +96,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	ILI9341_Init();
 	ILI9341_Fill_Screen(WHITE);
+	ILI9341_Draw_Text("FPS TEST, 40 loop 2 screens", 10, 10, BLACK, 1, WHITE);
+	//ILI9341_Fill_Screen(WHITE);
+	//ILI9341_Set_Rotation(SCREEN_HORIZONTAL_2);
+	//ILI9341_Draw_Text("RGB Picture", 10, 10, BLACK, 1, WHITE);
+	//ILI9341_Draw_Text("TIGER", 10, 20, BLACK, 1, WHITE);
+	HAL_Delay(2000);			
+	ILI9341_Draw_Image((const char*)snow_tiger, SCREEN_VERTICAL_1);		
+	ILI9341_Set_Rotation(SCREEN_VERTICAL_1);
+
 	//ILI9341_Draw_Rectangle(0, 0, 50, 50, BLUE);
 	//HAL_Delay(3000);
 	//ILI9341_Fill_Screen(RED);
@@ -106,14 +117,15 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		ILI9341_Draw_Rectangle(95, y, 50, 50, WHITE);
-		y = (y+5)%350;
-		ILI9341_Draw_Rectangle(95, y, 50, 50, BLUE);
 		
-		HAL_Delay(100);
+		//ILI9341_Draw_Rectangle(95, y, 50, 50, WHITE);
+		//y = (y+5)%350;
+		//ILI9341_Draw_Rectangle(95, y, 50, 50, BLUE);
+		
+		//HAL_Delay(100);
     /* USER CODE BEGIN 3 */
-		//HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
-		//HAL_Delay(1000);
+		HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
+		HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

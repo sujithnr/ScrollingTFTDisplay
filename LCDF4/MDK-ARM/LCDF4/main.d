@@ -32,3 +32,5 @@ lcdf4\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 lcdf4\main.o: ../Inc/spi.h
 lcdf4\main.o: ../Inc/gpio.h
 lcdf4\main.o: ..\MDK-ARM\LCDLib.h
+lcdf4\main.o: ..\MDK-ARM\LCDGFX.h
+lcdf4\main.o: ..\MDK-ARM\snow_tiger.h
