@@ -64,4 +64,6 @@ void ILI9341_Draw_Filled_Rectangle_Size_Text(uint16_t X0, uint16_t Y0, uint16_t 
 //65K colour (2Bytes / Pixel)
 void ILI9341_Draw_Image(const char* Image_Array, uint8_t Orientation);
 
+void ILI9341_SetCursorPosition(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
+void ILI9341_printImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t *data, uint32_t size);
 #endif

@@ -359,4 +359,31 @@ void ILI9341_Draw_Image(const char* Image_Array, uint8_t Orientation)
 	}
 }
 
+//3. Set cursor position
+void ILI9341_SetCursorPosition(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
+
+  ILI9341_Write_Command(0x2A);
+  ILI9341_Write_Data(x1>>8);
+  ILI9341_Write_Data(x1 & 0xFF);
+  ILI9341_Write_Data(x2>>8);
+  ILI9341_Write_Data(x2 & 0xFF);
+
+  ILI9341_Write_Command(0x2B);
+  ILI9341_Write_Data(y1>>8);
+  ILI9341_Write_Data(y1 & 0xFF);
+  ILI9341_Write_Data(y2>>8);
+  ILI9341_Write_Data(y2 & 0xFF);
+  ILI9341_Write_Command(0x2C);
+}
+
+//12. Image print (RGB 565, 2 bytes per pixel)
+void ILI9341_printImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t *data, uint32_t size)
+{
+	uint32_t n = size;
+	ILI9341_SetCursorPosition(x, y, w+x-1, h+y-1);
+	for(uint32_t i=0; i<n ; i++)
+	{
+		ILI9341_Write_Data(data[i]);
+	}
+}
 
