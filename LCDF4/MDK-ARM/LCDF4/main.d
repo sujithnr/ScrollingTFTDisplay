@@ -33,4 +33,4 @@ lcdf4\main.o: ../Inc/spi.h
 lcdf4\main.o: ../Inc/gpio.h
 lcdf4\main.o: ..\MDK-ARM\LCDLib.h
 lcdf4\main.o: ..\MDK-ARM\LCDGFX.h
-lcdf4\main.o: ..\MDK-ARM\snow_tiger.h
+lcdf4\main.o: ..\MDK-ARM\CNC.h
