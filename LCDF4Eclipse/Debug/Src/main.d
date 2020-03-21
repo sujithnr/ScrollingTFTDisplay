@@ -30,7 +30,9 @@ Src/main.o: ../Src/main.c \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/main.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/gpio.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDLib.h \
- C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDGFX.h
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDGFX.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/STM32.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/CNC.h
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/main.h:
 
@@ -95,3 +97,7 @@ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDLib.h:
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDGFX.h:
+
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/STM32.h:
+
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/CNC.h:

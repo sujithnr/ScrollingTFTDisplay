@@ -383,6 +383,14 @@ void ILI9341_printImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t 
 	ILI9341_SetCursorPosition(x, y, w+x-1, h+y-1);
 	for(uint32_t i=0; i<n ; i++)
 	{
+		/*
+		 * Library Edit: To create a Scrolling Effect, the function calculates (approximately)
+		 * the last data point needed to display on the screen before tiling at the top of the
+		 * image happens. The function then breaks at this point.
+		 */
+		int stop = 320-y;
+		int lastdata = stop*w*2;
+		if (n >= lastdata) break;
 		ILI9341_Write_Data(data[i]);
 	}
 }

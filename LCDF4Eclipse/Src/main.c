@@ -24,6 +24,8 @@
 #include "gpio.h"
 #include "LCDLib.h"
 #include "LCDGFX.h"
+#include "STM32.h"
+#include "CNC.h"
 
 
 /* Private includes ----------------------------------------------------------*/
@@ -95,18 +97,31 @@ int main(void)
   MX_SPI5_Init();
   /* USER CODE BEGIN 2 */
   ILI9341_Init();
-  ILI9341_Fill_Screen(RED);
+  ILI9341_Fill_Screen(WHITE);
+ // ILI9341_Draw_Text("STM32", 0, 0, BLACK, 3, WHITE);
+  //HAL_Delay(2000);
+  //ILI9341_printImage(0, 50, 80, 130, STM32, sizeof(STM32));
+  //HAL_Delay(3000);
+  //ILI9341_Fill_Screen(WHITE);
+  //ILI9341_Draw_Text("CNC", 0, 0, BLACK, 3, WHITE);
+  //HAL_Delay(2000);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint16_t y = 0;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
-	  HAL_Delay(1000);
+	  ILI9341_Draw_Rectangle(0, y, 240, 25, WHITE);
+	  y = (y + 25)%320;
+	  ILI9341_printImage(13, y, 214, 161, CNC, sizeof(CNC));
+	  HAL_Delay(500);
+	  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
+	  //HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
