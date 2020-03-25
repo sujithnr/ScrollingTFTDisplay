@@ -115,20 +115,20 @@ int main(void)
   //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 290, BLACK, 2, WHITE);
  // ILI9341_printImage(13, 319-161, 214, 161, CNC, sizeof(CNC));
   //ILI9341_printImage(13, y+200, 214, 161, CNC, sizeof(CNC));
-  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
+  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
-	  //ILI9341_Fill_Screen(WHITE);
-	  //y = (y + 25)%319;
-	  //ILI9341_printImage(0, y, 80, 130, STM32, sizeof(STM32));
-	  //ILI9341_printImage(13, y+150, 214, 161, CNC, sizeof(CNC));
-	  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, y, BLACK, 2, WHITE);
-	  //ILI9341_printImage(0, y, 80, 130, STM32, sizeof(STM32));
-
+	  ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
+	 //ILI9341_Fill_Screen(WHITE);
+	  y = (y + 25)%319;
+	  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, y, BLACK, 2, WHITE);
+	  ILI9341_Draw_Text("2 Highland Ln", 0, y+30, BLACK, 2, WHITE);
+	  ILI9341_Draw_Text("Littleton, MA 01460", 0, y+60, BLACK, 2, WHITE);
+	  ILI9341_printImage(0, y+90, 80, 130, STM32, sizeof(STM32));
+	  ILI9341_printImage(13, y+240, 214, 161, CNC, sizeof(CNC));
 	  //HAL_Delay(500);
 	  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
 	  //HAL_Delay(1000);
