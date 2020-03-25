@@ -27,7 +27,6 @@
 #include "STM32.h"
 #include "CNC.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -97,6 +96,7 @@ int main(void)
   MX_SPI5_Init();
   /* USER CODE BEGIN 2 */
   ILI9341_Init();
+  ILI9341_Set_Rotation(SCREEN_VERTICAL_1);
   ILI9341_Fill_Screen(WHITE);
  // ILI9341_Draw_Text("STM32", 0, 0, BLACK, 3, WHITE);
   //HAL_Delay(2000);
@@ -111,15 +111,25 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint16_t y = 0;
+  //ILI9341_printImage(80, y, 80, 130, STM32, sizeof(STM32));
+  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 290, BLACK, 2, WHITE);
+ // ILI9341_printImage(13, 319-161, 214, 161, CNC, sizeof(CNC));
+  //ILI9341_printImage(13, y+200, 214, 161, CNC, sizeof(CNC));
+  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  ILI9341_Draw_Rectangle(0, y, 240, 25, WHITE);
-	  y = (y + 25)%320;
-	  ILI9341_printImage(13, y, 214, 161, CNC, sizeof(CNC));
-	  HAL_Delay(500);
+	  //ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
+	  //ILI9341_Fill_Screen(WHITE);
+	  //y = (y + 25)%319;
+	  //ILI9341_printImage(0, y, 80, 130, STM32, sizeof(STM32));
+	  //ILI9341_printImage(13, y+150, 214, 161, CNC, sizeof(CNC));
+	  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, y, BLACK, 2, WHITE);
+	  //ILI9341_printImage(0, y, 80, 130, STM32, sizeof(STM32));
+
+	  //HAL_Delay(500);
 	  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
 	  //HAL_Delay(1000);
   }
@@ -138,7 +148,7 @@ void SystemClock_Config(void)
   /** Configure the main internal regulator output voltage 
   */
   __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
   /** Initializes the CPU, AHB and APB busses clocks 
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
@@ -147,10 +157,16 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 70;
+  RCC_OscInitStruct.PLL.PLLN = 180;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Activate the Over-Drive mode 
+  */
+  if (HAL_PWREx_EnableOverDrive() != HAL_OK)
   {
     Error_Handler();
   }
@@ -160,10 +176,10 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
     Error_Handler();
   }

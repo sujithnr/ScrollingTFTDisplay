@@ -221,7 +221,7 @@ void ILI9341_Draw_Filled_Rectangle_Coord(uint16_t X0, uint16_t Y0, uint16_t X1, 
 
 /*Draws a character (fonts imported from fonts.h) at X,Y location with specified font colour, size and Background colour*/
 /*See fonts.h implementation of font on what is required for changing to a different font when switching fonts libraries*/
-void ILI9341_Draw_Char(char Character, uint8_t X, uint8_t Y, uint16_t Colour, uint16_t Size, uint16_t Background_Colour) 
+void ILI9341_Draw_Char(char Character, uint16_t X, uint16_t Y, uint16_t Colour, uint16_t Size, uint16_t Background_Colour)
 {
 		uint8_t 	function_char;
     uint8_t 	i,j;
@@ -260,9 +260,10 @@ void ILI9341_Draw_Char(char Character, uint8_t X, uint8_t Y, uint16_t Colour, ui
 
 /*Draws an array of characters (fonts imported from fonts.h) at X,Y location with specified font colour, size and Background colour*/
 /*See fonts.h implementation of font on what is required for changing to a different font when switching fonts libraries*/
-void ILI9341_Draw_Text(const char* Text, uint8_t X, uint8_t Y, uint16_t Colour, uint16_t Size, uint16_t Background_Colour)
+void ILI9341_Draw_Text(const char* Text, uint16_t X, uint16_t Y, uint16_t Colour, uint16_t Size, uint16_t Background_Colour)
 {
     while (*Text) {
+
         ILI9341_Draw_Char(*Text++, X, Y, Colour, Size, Background_Colour);
         X += CHAR_WIDTH*Size;
     }
@@ -381,6 +382,7 @@ void ILI9341_printImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t 
 {
 	uint32_t n = size;
 	ILI9341_SetCursorPosition(x, y, w+x-1, h+y-1);
+	if (y > ILI9341_SCREEN_WIDTH) return;
 	for(uint32_t i=0; i<n ; i++)
 	{
 		/*
@@ -388,9 +390,9 @@ void ILI9341_printImage(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint8_t 
 		 * the last data point needed to display on the screen before tiling at the top of the
 		 * image happens. The function then breaks at this point.
 		 */
-		int stop = 320-y;
+		int stop = 319-y;
 		int lastdata = stop*w*2;
-		if (n >= lastdata) break;
+		if (i >= lastdata) break;
 		ILI9341_Write_Data(data[i]);
 	}
 }
