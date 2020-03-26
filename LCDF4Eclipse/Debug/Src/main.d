@@ -20,14 +20,17 @@ Src/main.o: ../Src/main.c \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
- C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/spi.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/adc.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/main.h \
+ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/spi.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/gpio.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDLib.h \
  C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/LCDGFX.h \
@@ -76,6 +79,10 @@ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h:
 
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h:
+
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h:
+
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h:
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h:
@@ -88,9 +95,11 @@ C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 
-C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/spi.h:
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/adc.h:
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/main.h:
+
+C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/spi.h:
 
 C:/Users/Sujith\ Naapa\ Ramesh/Documents/GitHub/ScrollingTFTDisplay/LCDF4Eclipse/Inc/gpio.h:
 

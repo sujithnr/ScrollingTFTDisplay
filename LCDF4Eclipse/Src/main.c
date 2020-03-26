@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "spi.h"
 #include "gpio.h"
 #include "LCDLib.h"
@@ -94,6 +95,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI5_Init();
+  MX_ADC1_Init();
+
   /* USER CODE BEGIN 2 */
   ILI9341_Init();
   ILI9341_Set_Rotation(SCREEN_VERTICAL_1);
@@ -116,19 +119,32 @@ int main(void)
  // ILI9341_printImage(13, 319-161, 214, 161, CNC, sizeof(CNC));
   //ILI9341_printImage(13, y+200, 214, 161, CNC, sizeof(CNC));
   //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
+  uint32_t adcValue = 0;
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  HAL_ADC_Start(&hadc1);
+	  if(HAL_ADC_PollForConversion(&hadc1, 5)==HAL_OK)
+	  {
+		  adcValue = HAL_ADC_GetValue(&hadc1);
+		  if (adcValue >= 0 && adcValue <= 2047){
+			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
+			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_SET);
+		  }
+		  else{
+			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
+			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_RESET);
+		  }
+	  }
     /* USER CODE BEGIN 3 */
-	  ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
+	  //ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
 	 //ILI9341_Fill_Screen(WHITE);
-	  y = (y + 25)%319;
-	  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, y, BLACK, 2, WHITE);
-	  ILI9341_Draw_Text("2 Highland Ln", 0, y+30, BLACK, 2, WHITE);
-	  ILI9341_Draw_Text("Littleton, MA 01460", 0, y+60, BLACK, 2, WHITE);
-	  ILI9341_printImage(0, y+90, 80, 130, STM32, sizeof(STM32));
-	  ILI9341_printImage(13, y+240, 214, 161, CNC, sizeof(CNC));
+	  //y = (y + 25)%319;
+	  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, y, BLACK, 2, WHITE);
+	  //ILI9341_Draw_Text("2 Highland Ln", 0, y+30, BLACK, 2, WHITE);
+	  //ILI9341_Draw_Text("Littleton, MA 01460", 0, y+60, BLACK, 2, WHITE);
+	  //ILI9341_printImage(0, y+90, 80, 130, STM32, sizeof(STM32));
+	  //ILI9341_printImage(13, y+240, 214, 161, CNC, sizeof(CNC));
 	  //HAL_Delay(500);
 	  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
 	  //HAL_Delay(1000);

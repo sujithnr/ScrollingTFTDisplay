@@ -6,6 +6,7 @@
 C_SRCS += \
 ../Src/LCDGFX.c \
 ../Src/LCDLib.c \
+../Src/adc.c \
 ../Src/gpio.c \
 ../Src/main.c \
 ../Src/spi.c \
@@ -17,6 +18,7 @@ C_SRCS += \
 OBJS += \
 ./Src/LCDGFX.o \
 ./Src/LCDLib.o \
+./Src/adc.o \
 ./Src/gpio.o \
 ./Src/main.o \
 ./Src/spi.o \
@@ -28,6 +30,7 @@ OBJS += \
 C_DEPS += \
 ./Src/LCDGFX.d \
 ./Src/LCDLib.d \
+./Src/adc.d \
 ./Src/gpio.d \
 ./Src/main.d \
 ./Src/spi.d \
