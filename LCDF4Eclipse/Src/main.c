@@ -120,15 +120,40 @@ int main(void)
   //ILI9341_printImage(13, y+200, 214, 161, CNC, sizeof(CNC));
   //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
   uint32_t adcValue = 0;
-  uint32_t pastadcValue = 0;
+  uint32_t pastadcValue1 = 0;
+  uint32_t pastadcValue2 = 0;
+  uint32_t pastadcValue3 = 0;
+  uint32_t pastadcValue4 = 0;
+  uint32_t pastadcValue5 = 0;
+  uint32_t pastadcValue6 = 0;
+  uint32_t pastadcValue7 = 0;
+  uint32_t pastadcValue8 = 0;
+  uint32_t pastadcValue9 = 0;
+  uint32_t pastadcValue10 = 0;
+  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
+  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
+  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
+  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
+  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
+
   while (1)
   {
     /* USER CODE END WHILE */
 	  HAL_ADC_Start(&hadc1);
 	  if(HAL_ADC_PollForConversion(&hadc1, 5)==HAL_OK)
 	  {
-		  pastadcValue = adcValue;
-		  adcValue = HAL_ADC_GetValue(&hadc1)/7;
+		  pastadcValue10 = pastadcValue9;
+		  pastadcValue9 = pastadcValue8;
+		  pastadcValue8 = pastadcValue7;
+		  pastadcValue7 = pastadcValue6;
+		  pastadcValue6 = pastadcValue5;
+		  pastadcValue5 = pastadcValue4;
+		  pastadcValue4 = pastadcValue3;
+		  pastadcValue3 = pastadcValue2;
+		  pastadcValue2 = pastadcValue1;
+		  pastadcValue1 = adcValue;
+		  adcValue = (HAL_ADC_GetValue(&hadc1)/7)-320; // divide by 7 to get within the range of 0 to 640
+		  	  	  	  	  	  	  	  	  	  	  	   // subtract by 320 to have range shift to -320 to 320
 //		  if (adcValue >= 0 && adcValue <= 2047){
 //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
 //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_SET);
@@ -137,15 +162,18 @@ int main(void)
 //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
 //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_RESET);
 //		  }
+		  if (adcValue != pastadcValue1 && adcValue != pastadcValue2 && adcValue != pastadcValue3 && adcValue != pastadcValue4 && adcValue != pastadcValue5 && adcValue != pastadcValue6 && adcValue != pastadcValue7 && adcValue != pastadcValue8 && adcValue != pastadcValue9 && adcValue != pastadcValue10){
+		  		  ILI9341_Fill_Screen(WHITE);
+		  		  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
+		  		  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
+		  		  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
+		  		  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
+		  		  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
+		  		  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
+		  		  //HAL_Delay(1000);
+		  }
 	  }
-	  if (pastadcValue != adcValue){
-		  ILI9341_Fill_Screen(WHITE);
-		  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
-		  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
-		  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
-		  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
-		  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
-	  }
+
     /* USER CODE BEGIN 3 */
 	  //ILI9341_Draw_Rectangle(0, y, 240, 320-y, WHITE);
 	 //ILI9341_Fill_Screen(WHITE);
