@@ -120,7 +120,7 @@ int main(void)
   	  		   * shift by two to bring range of values down to 0 to 1024
   	  		   * subtract by 320 t0 get range to -320 to 704
   	  		   */
-  	  		  if ((adcReadValue - pastadcValue) <= -25 && (adcReadValue - pastadcValue) >= 25){
+  	  		  if ((adcReadValue - pastadcValue) <= -2 && (adcReadValue - pastadcValue) >= 2){
   	  		  	  	  ILI9341_Fill_Screen(WHITE);
   	  		  	  	  ILI9341_printImage(13, adcValue-650, 214, 161, CNC, sizeof(CNC));
   	  		  	  	  ILI9341_printImage(13, adcValue-300, 214, 161, CNC, sizeof(CNC));
