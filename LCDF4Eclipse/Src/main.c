@@ -132,7 +132,7 @@ int main(void)
 	  	  if(HAL_ADC_PollForConversion(&hadc1, 5)==HAL_OK)
 	  	  {
 	  		  pastadcValue = adcValue;
-	  		  adcValue = (HAL_ADC_GetValue(&hadc1)>>1)-320; // divide by 7 to get within the range of 0 to 511
+	  		  adcValue = (HAL_ADC_GetValue(&hadc1)>>1)-320; // divide by 2 to get within the range of 0 to 511
 	  		  	  	  	  	  	  	  	  	  	  	  	   // subtract by 320 to have range shift to -320 to 191
 	  //		  if (adcValue >= 0 && adcValue <= 2047){
 	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
@@ -142,8 +142,9 @@ int main(void)
 	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
 	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_RESET);
 	  //		  }
-	  		  if (adcValue != pastadcValue){
-	  		  		  ILI9341_Fill_Screen(WHITE);
+	  		  if ((adcValue - pastadcValue) < -2 && (adcValue - pastadcValue) > 2){
+	  		  	//if (adcValue != pastadcValue){
+	  		  	  	  ILI9341_Fill_Screen(WHITE);
 	  		  		  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
 	  		  		  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
 	  		  		  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
