@@ -100,63 +100,45 @@ int main(void)
   ILI9341_Init();
   ILI9341_Set_Rotation(SCREEN_VERTICAL_1);
   ILI9341_Fill_Screen(WHITE);
- // ILI9341_Draw_Text("STM32", 0, 0, BLACK, 3, WHITE);
-  //HAL_Delay(2000);
-  //ILI9341_printImage(0, 50, 80, 130, STM32, sizeof(STM32));
-  //HAL_Delay(3000);
-  //ILI9341_Fill_Screen(WHITE);
-  //ILI9341_Draw_Text("CNC", 0, 0, BLACK, 3, WHITE);
-  //HAL_Delay(2000);
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  uint16_t y = 0;
-  //ILI9341_printImage(80, y, 80, 130, STM32, sizeof(STM32));
-  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 290, BLACK, 2, WHITE);
- // ILI9341_printImage(13, 319-161, 214, 161, CNC, sizeof(CNC));
-  //ILI9341_printImage(13, y+200, 214, 161, CNC, sizeof(CNC));
-  //ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, 25, BLACK, 2, WHITE);
-  uint32_t adcValue = 0;
-  uint32_t pastadcValue = 0;
-  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
-  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
-  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
-  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
-  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
+    /* USER CODE BEGIN WHILE */
+    uint32_t adcValue = 0;
+    uint32_t adcReadValue = 0;
+    uint32_t pastadcValue = 0;
 
-  while (1)
-  {
-	  HAL_ADC_Start(&hadc1);
-	  	  if(HAL_ADC_PollForConversion(&hadc1, 5)==HAL_OK)
-	  	  {
-	  		  pastadcValue = adcValue;
-	  		  adcValue = (HAL_ADC_GetValue(&hadc1)>>1)-320; // divide by 2 to get within the range of 0 to 511
-	  		  	  	  	  	  	  	  	  	  	  	  	   // subtract by 320 to have range shift to -320 to 191
-	  //		  if (adcValue >= 0 && adcValue <= 2047){
-	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_RESET);
-	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_SET);
-	  //		  }
-	  //		  else{
-	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_13, GPIO_PIN_SET);
-	  //			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, GPIO_PIN_RESET);
-	  //		  }
-	  		  if ((adcValue - pastadcValue) < -2 && (adcValue - pastadcValue) > 2){
-	  		  	//if (adcValue != pastadcValue){
-	  		  	  	  ILI9341_Fill_Screen(WHITE);
-	  		  		  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
-	  		  		  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
-	  		  		  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
-	  		  		  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
-	  		  		  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
-	  		  		  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
-	  		  		  //HAL_Delay(1000);
-	  		  }
-	  	  }
-  }
-  /* USER CODE END 3 */
-}
+    while (1)
+    {
+  	  HAL_ADC_Start(&hadc1);
+  	  	  if(HAL_ADC_PollForConversion(&hadc1, 5)==HAL_OK)
+  	  	  {
+  	  		  pastadcValue = adcReadValue;
+  	  		  adcReadValue = HAL_ADC_GetValue(&hadc1);
+  	  		  adcValue = (adcReadValue >> 2) - 320;
+  	  		  /*
+  	  		   * shift by two to bring range of values down to 0 to 1024
+  	  		   * subtract by 320 t0 get range to -320 to 704
+  	  		   */
+  	  		  if ((adcReadValue - pastadcValue) <= -25 && (adcReadValue - pastadcValue) >= 25){
+  	  		  	  	  ILI9341_Fill_Screen(WHITE);
+  	  		  	  	  ILI9341_printImage(13, adcValue-650, 214, 161, CNC, sizeof(CNC));
+  	  		  	  	  ILI9341_printImage(13, adcValue-300, 214, 161, CNC, sizeof(CNC));
+  	  		  	  	  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue-90, BLACK, 2, WHITE);
+  	  		  	  	  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue-60, BLACK, 2, WHITE);
+  	  		  	  	  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue-30, BLACK, 2, WHITE);
+  	  		  		  ILI9341_Draw_Text("Sujith Naapa Ramesh", 0, adcValue, BLACK, 2, WHITE);
+  	  		  		  ILI9341_Draw_Text("2 Highland Ln", 0, adcValue+30, BLACK, 2, WHITE);
+  	  		  		  ILI9341_Draw_Text("Littleton, MA 01460", 0, adcValue+60, BLACK, 2, WHITE);
+  	  		  		  ILI9341_printImage(0, adcValue+90, 80, 130, STM32, sizeof(STM32));
+  	  		  		  ILI9341_printImage(13, adcValue+240, 214, 161, CNC, sizeof(CNC));
+  	  		  		  ILI9341_printImage(13, adcValue+450, 214, 161, CNC, sizeof(CNC));
+  	  		  		  //HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13|GPIO_PIN_14);
+  	  		  		  //HAL_Delay(1000);
+  	  		  }
+  	  	  }
+    }
+    /* USER CODE END 3 */}
 
 /**
   * @brief System Clock Configuration
